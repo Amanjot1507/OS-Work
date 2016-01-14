@@ -1,0 +1,13 @@
+Your homework for Project-6 consists of the following:
+
+1) Implement a Unix-like file system layer.
+
+2) Use free space bitmaps to keep track of free and used blocks.
+
+3) (Optional) Implement a file system checker (i.e. fsck) to check the integrity of a ufsdisk file system.
+
+4) Prepare and submit a submission.zip file with the following files:
+		- ufsdisk.c
+		- ufsdisk.h
+		- ufsdisk_chk.c (optional, but strongly recommended)
+		- other modified files
