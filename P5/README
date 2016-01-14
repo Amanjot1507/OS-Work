@@ -1,0 +1,49 @@
+Project 5 - Full Stack Networking
+=================================
+
+In this project, you will take a small departure from PortOS to learn about how to build a full networking stack using the C socket interface. You will first implement the socket level calls in order to form point to point connections. In the starter code, there already exists a flooding (gossip) mechanism that allows you to flood messages to all other nodes in the network. Using this mechanism, you will have to implement a link-state routing protocol. Finally, on top of the link state protocol, you will implement a message sending interface that will allow nodes to send messages using the shortest path. For some bonus points, you can implement an application on top of your send message abstraction.
+
+Details - 
+=========
+There are several distinct components to this project:
+
+1. For the first part, you will be working in connect.c. In the main() method, you will have to insert code where indicated that does the 	
+   following:
+   Create a non-blocking TCP socket using the socket() and fcntl() system calls.
+   Set the SO_REUSEADDR option on the socket using the setsocketop()
+   Use bind() to bind the socket to bind_port
+
+   In addition, you will have to make a nonblocking socket in try_connect and server_handler where indicated. After this part, you should be    
+   able to compile and run your code. At the prompt, you should be able to connect two machines together using the connect command, which has   
+   the form:
+
+   C192.168.2.248:54292
+   This will connect your node to another node with IP address 192.168.2.248 and port 54292. You can also use domain names instead of IP   
+   addresses in this command. 
+
+
+2. This next part will be work done in link_state.c. Here, you will first implement Dijkstra's shortest path algorithm. The function signature 
+   and some utility functions are given here. In addition, node names are strings. However, we give you ways to convert from a string version 
+   of a node name to a sockaddr_in and back. 
+
+
+3. Now, you must implement a flooding mechanism that will broadcast your active connections every time a new connection is formed. This will   
+   use the gossip mechanism from part 1. A gossip message will have the form:
+
+   G<src_addr:port>/<counter>/<payload>\n
+   where the payload is
+   ";<addr1:port1>;<addr2:port2>;<addr3:port3>...\n"
+   From this point onwards, your gossip messages must be of this format in order to be interoperable with other solutions. However, the manner 
+   in which you implement it is entirely up to you. 
+
+
+5. Finally, you must implement a link state routing algorithm and a new 'send' message. The send message has a similar format as the gossip  
+   format. The main difference is that the address belongs to the destination, not the source and the TTL is the maximum number of hops for 
+   this packet.
+
+   S<dst_addr:port>/<TTL>/<payload>\n
+   Remember, the link state algorithm must recompute the shortest path every time it receives a new routing update. When doing a send message, 
+   it must do the following:
+
+   If the send message belongs to you, then print out the payload.
+   If the send message belongs to someone else, then decrement the TTL by 1 and forward it according to the shortest path.

@@ -2,7 +2,7 @@ PortOS Educational Operating System
 ===================================
 
 This is the PortOS user-level threading library project.  Instructions for
-completing the project can be found on the CS4411 course website.
+completing the project can be found on the CS4411 course website - http://www.cs.cornell.edu/Courses/cs4410/2015fa/4411.php
 
 Compiling
 =========
@@ -27,13 +27,13 @@ This release contains three groups of files:
     - network.*
     - random.*
 
-2. the threading library itself
+2. the threading library itself - to be implemented
     - alarm.*
     - minithread.*
     - multilevel_queue.*
     - miniheader.* 
     - minimsg.*
-    - minisocket.*  <---- new in project 4
+    - minisocket.*
     - queue.*
     - synch.*
 
@@ -42,8 +42,18 @@ This release contains three groups of files:
     - sieve.c
     - test*.c
     - network[1-6].c 
-    - conn-network[1-3].c          <-- new in project 4!
+    - conn-network[1-3].c         
 
 You should not need to edit the system primitives, though you may want to read the header files!
 
+Project 1 - Non-preemptive multithreading
+=========================================
 
+Project 2 - Preemptive multithreading
+=====================================
+
+Project 3 - Unreliable datagram networking
+==========================================
+
+Project 4 - Reliable Networking and Streams
+===========================================
